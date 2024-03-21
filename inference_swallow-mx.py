@@ -73,11 +73,11 @@ def chat(prompt):
       token_ids = tokenizer.apply_chat_template(messages, return_tensors="pt")
       output_ids = model.generate(
           token_ids.to(model.device),
-          temperature=0.9,
+          temperature=0.7,
           do_sample=True,
           #top_p=0.95,
           #top_k=40,
-          max_new_tokens=4098,
+          max_new_tokens=128,
           repetition_penalty=1.05
       )
     output = tokenizer.decode(output_ids[0][token_ids.size(1) :])
